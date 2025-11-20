@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Des402-Jam3"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://bvc6n8cw6ucu6"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+mouse_cursor/custom_image="uid://8spu0xir4ei8"
 
 [dotnet]
 
