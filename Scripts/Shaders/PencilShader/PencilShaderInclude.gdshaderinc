@@ -19,10 +19,9 @@ vec4 pencil_fragment(sampler2D texture, vec2 uv, float frame)
 	pattern_uv = uv + sin(frame);
 	//pattern_uv = rotateUV(pattern_uv, vec2(0.5), sign(sin(TIME)));
 	vec4 base_color = texture(texture, uv);
-	vec4 pattern_color = texture(u_patternTexture,pattern_uv * 2.0) * 1.2;
-	pattern_color.a = pattern_color.a * 0.5;
+	vec4 pattern_color = texture(u_patternTexture,pattern_uv * 2.0) * 0.95;
 	
-	return base_color * pattern_color;
+	return base_color / pattern_color;
 
 }
 

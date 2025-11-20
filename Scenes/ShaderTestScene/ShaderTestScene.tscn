@@ -112,6 +112,7 @@ scale = Vector2(0.9652777, 0.9652777)
 texture = ExtResource("3_2bxtf")
 
 [node name="SquiggleOnly" type="Sprite2D" parent="."]
+visible = false
 material = ExtResource("1_a5cwm")
 position = Vector2(954.1735, 548.49994)
 scale = Vector2(1.9878615, 2.0314813)
@@ -119,8 +120,8 @@ texture = ExtResource("4_ci40n")
 
 [node name="Pencil" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_g68os")
-position = Vector2(954.1735, 548.49994)
-scale = Vector2(1.9878615, 2.0314813)
+position = Vector2(963.7415, 554)
+scale = Vector2(2.0077949, 2.051852)
 texture = ExtResource("4_ci40n")
 
 [node name="Crayon" type="Sprite2D" parent="."]
