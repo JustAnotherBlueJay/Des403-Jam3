@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp0d8oltfy1ne"]
+[gd_scene load_steps=16 format=3 uid="uid://dp0d8oltfy1ne"]
 
 [ext_resource type="Material" uid="uid://ccqgwpahhhaae" path="res://Scripts/Shaders/SquiggleVision/MAT_SquiggleVision.tres" id="1_a5cwm"]
 [ext_resource type="Texture2D" uid="uid://dvhbdi13lrg27" path="res://Scenes/ShaderTestScene/TestImages/Florence.webp" id="1_eo8jb"]
@@ -6,36 +6,133 @@
 [ext_resource type="Texture2D" uid="uid://bh7ltjvstxyng" path="res://Scenes/ShaderTestScene/TestImages/Window-Frame.webp" id="3_2bxtf"]
 [ext_resource type="Material" uid="uid://c2k2i0wi35w3o" path="res://Scripts/Shaders/HalfTone/MAT_HalfTone.tres" id="3_ci40n"]
 [ext_resource type="Texture2D" uid="uid://cy06vw0xmwjoe" path="res://Scenes/ShaderTestScene/TestImages/Window-Smoking.webp" id="4_ci40n"]
-[ext_resource type="Script" uid="uid://bgrkxr2od4g3c" path="res://Scenes/ShaderTestScene/Vewn.cs" id="5_ci40n"]
+[ext_resource type="Shader" uid="uid://be6v1o38f0sun" path="res://Scripts/Shaders/PencilShader/Pencil+Squiggle.gdshader" id="7_7oueu"]
+[ext_resource type="Texture2D" uid="uid://bx0558gyuisqm" path="res://Scripts/Shaders/PencilShader/pencil_unedited.jpg" id="8_e4s78"]
+[ext_resource type="Texture2D" uid="uid://ba5v85nu2ye5n" path="res://Scenes/ShaderTestScene/TestImages/Screenshot 2025-11-20 175633.png" id="8_iin6v"]
+[ext_resource type="Texture2D" uid="uid://dwwuo74ofhc1m" path="res://Scripts/Shaders/PencilShader/Crayon.png" id="9_e4s78"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fimod"]
+noise_type = 3
+frequency = 0.8396
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_00ktw"]
+noise = SubResource("FastNoiseLite_fimod")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g68os"]
+shader = ExtResource("7_7oueu")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.2
+shader_parameter/fps = 2.0
+shader_parameter/noise = SubResource("NoiseTexture2D_00ktw")
+shader_parameter/u_patternTexture = ExtResource("8_e4s78")
+
+[sub_resource type="Shader" id="Shader_7oueu"]
+code = "shader_type canvas_item;
+render_mode world_vertex_coords;
+
+group_uniforms Squiggle;
+/**
+ * Noise texture scale
+ * By default, the noise texture's size in world coordinates is set by its resolution
+*/
+uniform vec2 scale = vec2(1.0);
+uniform float strength = 1.0;
+/**
+ * Number of squiggle frames per second
+*/
+uniform float fps = 6.0;
+uniform sampler2D noise : filter_linear, repeat_enable;
+group_uniforms;
+
+varying vec4 modulate;
+varying vec2 noise_uv;
+
+#include \"res://Scripts/Shaders/PencilShader/PencilShaderInclude.gdshaderinc\"
+
+void vertex() {
+	modulate = COLOR;
+
+	// Use world coordinates for scale-independent squiggles, offset by position to keep pattern attached to object
+	noise_uv = (VERTEX - MODEL_MATRIX[3].xy) / (vec2(textureSize(noise, 0)) * scale);
+}
+
+// Use irrational constants for unique squiggles every frame
+#define offset_multiplier vec2(PI, E)
+
+void fragment() {
+	
+	float frame = floor(TIME * fps);
+	
+	vec2 noise_offset = vec2(floor(frame)) * offset_multiplier;
+	float noise_sample = texture(noise, noise_uv + noise_offset).r * 4.0 * PI;
+	vec2 direction = vec2(cos(noise_sample), sin(noise_sample));
+	vec2 squiggle_uv = UV + direction * strength * 0.005;
+	
+	
+	vec4 pencil = pencil_fragment(TEXTURE, squiggle_uv, frame);
+	vec4 squiggle = texture(TEXTURE, squiggle_uv) * modulate;
+	
+	COLOR = pencil;
+	//COLOR.r = min(squiggle.r, pencil.r);
+	//COLOR.g = min(squiggle.g, pencil.g);
+	//COLOR.b = min(squiggle.b, pencil.b);
+	
+	
+	//COLOR = pencil_fragment(TEXTURE, UV);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0iqoj"]
+shader = SubResource("Shader_7oueu")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.2
+shader_parameter/fps = 2.0
+shader_parameter/noise = SubResource("NoiseTexture2D_00ktw")
+shader_parameter/u_patternTexture = ExtResource("9_e4s78")
 
 [node name="ShaderTestScene" type="Node2D"]
 
 [node name="Florence" type="Sprite2D" parent="."]
+visible = false
 material = ExtResource("1_a5cwm")
-position = Vector2(157.74545, 499)
-scale = Vector2(0.68636364, 0.68636364)
+position = Vector2(221.3636, 850.5)
+scale = Vector2(0.9022726, 0.9022726)
 texture = ExtResource("1_eo8jb")
 
 [node name="Vewn" type="Sprite2D" parent="."]
+visible = false
 material = ExtResource("3_ci40n")
-position = Vector2(869.75006, 327.67664)
-scale = Vector2(1.4146705, 1.4146707)
+position = Vector2(1111, 695)
+scale = Vector2(1.6085327, 1.6085331)
 texture = ExtResource("2_a5cwm")
-script = ExtResource("5_ci40n")
 
 [node name="WindowFrame" type="Sprite2D" parent="."]
-position = Vector2(466, 479.00003)
-scale = Vector2(0.7638889, 0.7638889)
+visible = false
+position = Vector2(624.25, 844.69446)
+scale = Vector2(0.9652777, 0.9652777)
 texture = ExtResource("3_2bxtf")
 
-[node name="WindowSmoking" type="Sprite2D" parent="."]
-material = ExtResource("3_ci40n")
-position = Vector2(281.33823, 154.49998)
-scale = Vector2(0.51644534, 0.5277778)
+[node name="SquiggleOnly" type="Sprite2D" parent="."]
+material = ExtResource("1_a5cwm")
+position = Vector2(954.1735, 548.49994)
+scale = Vector2(1.9878615, 2.0314813)
 texture = ExtResource("4_ci40n")
-script = ExtResource("5_ci40n")
 
-[node name="Vewn2" type="Sprite2D" parent="."]
-position = Vector2(1366, 327.53293)
-scale = Vector2(1.4251497, 1.4251497)
-texture = ExtResource("2_a5cwm")
+[node name="Pencil" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g68os")
+position = Vector2(954.1735, 548.49994)
+scale = Vector2(1.9878615, 2.0314813)
+texture = ExtResource("4_ci40n")
+
+[node name="Crayon" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_0iqoj")
+position = Vector2(954.1735, 548.49994)
+scale = Vector2(1.9878615, 2.0314813)
+texture = ExtResource("4_ci40n")
+
+[node name="BiggerHalfTone" type="Sprite2D" parent="."]
+visible = false
+material = ExtResource("1_a5cwm")
+position = Vector2(970.75, 562)
+scale = Vector2(1.0975267, 1.1247485)
+texture = ExtResource("8_iin6v")
