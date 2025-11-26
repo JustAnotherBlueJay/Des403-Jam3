@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6t7wthf03l6k"]
+[gd_scene load_steps=6 format=3 uid="uid://6t7wthf03l6k"]
 
-[ext_resource type="Texture2D" uid="uid://bk834u7lpd3ll" path="res://image.png" id="1_ofew4"]
+[ext_resource type="Material" uid="uid://ccqgwpahhhaae" path="res://Scripts/Shaders/SquiggleVision/MAT_SquiggleVision.tres" id="1_k4v2d"]
+[ext_resource type="Texture2D" uid="uid://frmb8s6gy6d4" path="res://image.png" id="1_ofew4"]
 [ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/ClickableObject.tscn" id="2_ty2sy"]
 [ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scenes/TextManager.cs" id="3_guah6"]
 [ext_resource type="Texture2D" uid="uid://8spu0xir4ei8" path="res://icon.svg" id="3_ug47o"]
@@ -88,6 +89,7 @@ grow_vertical = 2
 color = Color(0.7176471, 0.54901963, 0.7176471, 1)
 
 [node name="Image" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_k4v2d")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,10 +107,10 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 501.0
-offset_top = 376.0
-offset_right = 651.0
-offset_bottom = 466.0
+offset_left = 508.0
+offset_top = 351.0
+offset_right = 583.0
+offset_bottom = 392.0
 myText = "Ramen Noodles"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
 myObjectIcon = NodePath("../../../Control/VBoxContainer2/ColorRect/ObjectIcon")
@@ -118,10 +120,10 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 440.67993
-offset_top = 186.40114
-offset_right = 535.5773
-offset_bottom = 276.40112
+offset_left = 494.0
+offset_top = 282.0
+offset_right = 541.01886
+offset_bottom = 314.9566
 rotation = 1.010533
 myText = "Paper"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
@@ -132,10 +134,10 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 339.0
-offset_top = 200.0
-offset_right = 485.03482
-offset_bottom = 290.0
+offset_left = 461.0
+offset_top = 289.0
+offset_right = 518.9542
+offset_bottom = 324.0583
 rotation = 1.9904027
 myText = "Dog"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
