@@ -1,0 +1,262 @@
+[gd_scene load_steps=5 format=3 uid="uid://6t7wthf03l6k"]
+
+[ext_resource type="Texture2D" uid="uid://bk834u7lpd3ll" path="res://image.png" id="1_ofew4"]
+[ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/ClickableObject.tscn" id="2_ty2sy"]
+[ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scenes/TextManager.cs" id="3_guah6"]
+[ext_resource type="Texture2D" uid="uid://8spu0xir4ei8" path="res://icon.svg" id="3_ug47o"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upper Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Upper Section"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left Icons" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+color = Color(1, 0, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+
+[node name="ImageArea" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Border" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7176471, 0.54901963, 0.7176471, 1)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_ofew4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Image" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 501.0
+offset_top = 376.0
+offset_right = 651.0
+offset_bottom = 466.0
+myText = "Ramen Noodles"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectIcon = NodePath("../../../Control/VBoxContainer2/ColorRect/ObjectIcon")
+
+[node name="ClickableObject2" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Image" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 440.67993
+offset_top = 186.40114
+offset_right = 535.5773
+offset_bottom = 276.40112
+rotation = 1.010533
+myText = "Paper"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectIcon = NodePath("../../../Control/VBoxContainer2/ColorRect2/ObjectIcon")
+
+[node name="ClickableObject3" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Image" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 339.0
+offset_top = 200.0
+offset_right = 485.03482
+offset_bottom = 290.0
+rotation = 1.9904027
+myText = "Dog"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectIcon = NodePath("../../../Control/VBoxContainer2/ColorRect3/ObjectIcon")
+
+[node name="Control" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+color = Color(1, 1, 0, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Control/VBoxContainer2/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ug47o")
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Control/VBoxContainer2/ColorRect2"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ug47o")
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Control/VBoxContainer2/ColorRect3"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ug47o")
+
+[node name="Lower Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Dialogue Area" type="Control" parent="VBoxContainer/Lower Section"]
+layout_mode = 1
+anchor_left = 0.25100002
+anchor_right = 0.749
+anchor_bottom = 1.0
+offset_left = 0.079956055
+offset_right = -0.080078125
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextManager" type="RichTextLabel" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_guah6")
