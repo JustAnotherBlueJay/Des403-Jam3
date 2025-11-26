@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://bduwgga81ggps"]
+
+[ext_resource type="AudioStream" uid="uid://dwiiw1qjaf22s" path="res://Audio/StorkSong1.ogg" id="1_2hxdt"]
+[ext_resource type="AudioStream" uid="uid://dq3xybxadjlx2" path="res://Audio/StorkIntro.ogg" id="1_t2riv"]
+[ext_resource type="AudioStream" uid="uid://brk408vlbpkmb" path="res://Audio/StorkSong2.ogg" id="2_hjta8"]
+[ext_resource type="AudioStream" uid="uid://byg6gkuyhwmme" path="res://Audio/StorkSong3.ogg" id="3_t2riv"]
+[ext_resource type="AudioStream" uid="uid://cjo3j4y6hrco0" path="res://Audio/StorkOutro.ogg" id="4_n6cea"]
+[ext_resource type="AudioStream" uid="uid://cvq48iqh4abgd" path="res://Audio/StorkSong4.ogg" id="4_o3hbc"]
+[ext_resource type="AudioStream" uid="uid://et8eljt0dvi4" path="res://Audio/StorkSong5.ogg" id="5_n6cea"]
+[ext_resource type="AudioStream" uid="uid://fm5krpx5oq86" path="res://Audio/StorkSong6.ogg" id="6_nqvpd"]
+[ext_resource type="AudioStream" uid="uid://ch1wqxcxvkgg2" path="res://Audio/StorkSong7.ogg" id="7_sart0"]
+[ext_resource type="AudioStream" uid="uid://dxfnj5o48lks7" path="res://Audio/StorkSong8.ogg" id="8_vssb4"]
+[ext_resource type="AudioStream" uid="uid://dncwjngtwlars" path="res://Audio/StorkSong9.ogg" id="9_dvbm2"]
+[ext_resource type="AudioStream" uid="uid://bdmp384stg80p" path="res://Audio/StorkSong10.ogg" id="10_3dkja"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_dcf0c"]
+clip_count = 12
+clip_0/name = &"Stork Intro"
+clip_0/stream = ExtResource("1_t2riv")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Song1"
+clip_1/stream = ExtResource("1_2hxdt")
+clip_1/auto_advance = 0
+clip_2/name = &"Song2"
+clip_2/stream = ExtResource("2_hjta8")
+clip_2/auto_advance = 0
+clip_3/name = &"Song3"
+clip_3/stream = ExtResource("3_t2riv")
+clip_3/auto_advance = 0
+clip_4/name = &"Song4"
+clip_4/stream = ExtResource("4_o3hbc")
+clip_4/auto_advance = 0
+clip_5/name = &"Song5"
+clip_5/stream = ExtResource("5_n6cea")
+clip_5/auto_advance = 0
+clip_6/name = &"Song6"
+clip_6/stream = ExtResource("6_nqvpd")
+clip_6/auto_advance = 0
+clip_7/name = &"Song7"
+clip_7/stream = ExtResource("7_sart0")
+clip_7/auto_advance = 0
+clip_8/name = &"Song8"
+clip_8/stream = ExtResource("8_vssb4")
+clip_8/auto_advance = 0
+clip_9/name = &"Song9"
+clip_9/stream = ExtResource("9_dvbm2")
+clip_9/auto_advance = 0
+clip_10/name = &"Song10"
+clip_10/stream = ExtResource("10_3dkja")
+clip_10/auto_advance = 0
+clip_11/name = &"Stork Outro"
+clip_11/stream = ExtResource("4_n6cea")
+clip_11/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.1,
+"fade_mode": 4,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(11, 11): {
+"fade_beats": 0.1,
+"fade_mode": 4,
+"from_time": 3,
+"to_time": 1
+}
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamInteractive_dcf0c")
+bus = &"Music"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvc6n8cw6ucu6"]
+
+[ext_resource type="Script" uid="uid://d2ycxl243601h" path="res://Scripts/ClickableObject.cs" id="1_bk56x"]
+
+[node name="ClickableObject" type="Control" node_paths=PackedStringArray("myButton")]
+layout_mode = 3
+anchor_right = 0.078
+anchor_bottom = 0.13900001
+offset_right = 0.15999603
+offset_bottom = -0.08000946
+script = ExtResource("1_bk56x")
+myButton = NodePath("Texture/Button")
+myText = "Hello World"
+
+[node name="Texture" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25490198)
+
+[node name="Button" type="Button" parent="Texture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

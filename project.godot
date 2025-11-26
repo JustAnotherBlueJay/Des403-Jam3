@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="Des402-Jam3"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://6t7wthf03l6k"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/size/viewport_width.editor=1280
+window/size/viewport_height.editor=720
+window/size/mode.editor=0
 
 [dotnet]
 
