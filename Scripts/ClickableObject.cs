@@ -16,6 +16,7 @@ public partial class ClickableObject : Control
     [Export] TextureRect shineTexture;
 
     public Action E_Clicked;
+    private bool hasBeenClicked = false;
 
     public override void _Ready()
     {
@@ -29,6 +30,8 @@ public partial class ClickableObject : Control
         //emmit the clicked signal
         E_Clicked();
 
+        hasBeenClicked = true;
+
         //add this objects text to the output 
         textManager.AddEntry(myText);
         //disconnect from the buttons signal
@@ -41,8 +44,8 @@ public partial class ClickableObject : Control
     private bool isShinePlaying = false;
     private async void OnMouseEnter()
     {
-
-        if (shineTexture != null && !isShinePlaying)
+        //if there is a shine texture, its not currently playing, and this object hasnt already been clicked play the shine
+        if (shineTexture != null && !isShinePlaying && !hasBeenClicked)
         {   
             isShinePlaying=true;
             await Shine(0.5f);
