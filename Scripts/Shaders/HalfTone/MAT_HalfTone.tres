@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c2k2i0wi35w3o"]
+
+[ext_resource type="Shader" uid="uid://e66xxxkvngvr" path="res://Scripts/Shaders/HalfTone/HalfTone.gdshader" id="1_stimh"]
+[ext_resource type="Texture2D" uid="uid://dsebxipl76b77" path="res://Scripts/Shaders/HalfTone/Halftone-Dither-Pattern.png" id="2_dob8x"]
+
+[resource]
+shader = ExtResource("1_stimh")
+shader_parameter/sampling_quality = 1.0
+shader_parameter/pattern_scaling = 25.000001089941282
+shader_parameter/cyan_pattern_rotation = 0.0
+shader_parameter/magenta_pattern_rotation = 15.0
+shader_parameter/yellow_pattern_rotation = 30.0
+shader_parameter/black_pattern_rotation = 45.0
+shader_parameter/alpha_threshold = 0.5
+shader_parameter/paper_color = Color(1, 1, 1, 1)
+shader_parameter/cyan_color = Color(0, 1, 1, 1)
+shader_parameter/magenta_color = Color(1, 0, 1, 1)
+shader_parameter/yellow_color = Color(1, 1, 0, 1)
+shader_parameter/black_color = Color(0, 0, 0, 1)
+shader_parameter/cyan_offset_position = Vector2(0, 0)
+shader_parameter/magenta_offset_position = Vector2(0, 0)
+shader_parameter/yellow_offset_position = Vector2(0, 0)
+shader_parameter/black_offset_position = Vector2(0, 0)
+shader_parameter/cyan_offset_rotation = 0.0
+shader_parameter/magenta_offset_rotation = 0.0
+shader_parameter/yellow_offset_rotation = 0.0
+shader_parameter/black_offset_rotation = 0.0
+shader_parameter/object_space = true
+shader_parameter/canvas_global_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/camera_global_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/halftone_dither_pattern = ExtResource("2_dob8x")

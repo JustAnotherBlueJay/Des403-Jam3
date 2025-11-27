@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvc6n8cw6ucu6"]
+[gd_scene load_steps=6 format=3 uid="uid://bvc6n8cw6ucu6"]
 
 [ext_resource type="Script" uid="uid://d2ycxl243601h" path="res://Scripts/ClickableObject.cs" id="1_bk56x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fj5m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk56x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sebls"]
+
+[sub_resource type="Theme" id="Theme_sebls"]
+Button/styles/focus = SubResource("StyleBoxEmpty_5fj5m")
+Button/styles/normal = SubResource("StyleBoxEmpty_bk56x")
+Button/styles/pressed = SubResource("StyleBoxEmpty_sebls")
 
 [node name="ClickableObject" type="Control" node_paths=PackedStringArray("myButton")]
 layout_mode = 3
@@ -19,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.25490198)
+color = Color(1, 1, 1, 0)
 
 [node name="Button" type="Button" parent="Texture"]
 layout_mode = 1
@@ -28,3 +39,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_sebls")

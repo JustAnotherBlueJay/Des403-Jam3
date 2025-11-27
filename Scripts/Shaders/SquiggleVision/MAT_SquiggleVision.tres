@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ccqgwpahhhaae"]
+
+[ext_resource type="Shader" uid="uid://bjl28nvpwm24g" path="res://Scripts/Shaders/SquiggleVision/SquiggleVision.gdshader" id="1_ujome"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ni2ld"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gshlb"]
+noise = SubResource("FastNoiseLite_ni2ld")
+
+[resource]
+shader = ExtResource("1_ujome")
+shader_parameter/scale = Vector2(0.25, 0.25)
+shader_parameter/strength = 0.08
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_gshlb")

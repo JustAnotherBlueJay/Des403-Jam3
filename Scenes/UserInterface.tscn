@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://6t7wthf03l6k"]
+[gd_scene load_steps=15 format=3 uid="uid://6t7wthf03l6k"]
 
-[ext_resource type="Texture2D" uid="uid://bk834u7lpd3ll" path="res://image.png" id="1_ofew4"]
+[ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="1_i00fv"]
+[ext_resource type="Texture2D" uid="uid://be4o0wwgcox1u" path="res://Art/TestAssets/BACKGROUND_WHITE.png" id="2_k5w2u"]
 [ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/ClickableObject.tscn" id="2_ty2sy"]
 [ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scenes/TextManager.cs" id="3_guah6"]
 [ext_resource type="Texture2D" uid="uid://8spu0xir4ei8" path="res://icon.svg" id="3_ug47o"]
+[ext_resource type="Texture2D" uid="uid://ch036ahxu0utp" path="res://Art/TestAssets/shutters.png" id="4_356oj"]
+[ext_resource type="Texture2D" uid="uid://db6r2a1w1n2ov" path="res://Art/TestAssets/futon.png" id="5_c7bke"]
+[ext_resource type="Texture2D" uid="uid://b0cf6cmel7paj" path="res://Art/TestAssets/wallandfloor_shade.png" id="5_u4gn2"]
+[ext_resource type="Texture2D" uid="uid://ccxiea5o8siqx" path="res://Art/TestAssets/wall_line.png" id="6_c7bke"]
+[ext_resource type="Texture2D" uid="uid://m731c83ex773" path="res://Art/TestAssets/window.png" id="7_i00fv"]
+[ext_resource type="Texture2D" uid="uid://b5ylh1qffa6lk" path="res://Art/TestAssets/door.png" id="8_i00fv"]
+[ext_resource type="Texture2D" uid="uid://wx11aw63g7fo" path="res://Art/TestAssets/dog.png" id="9_335po"]
+[ext_resource type="Texture2D" uid="uid://ceku2umc2jdty" path="res://Art/TestAssets/noodles.png" id="10_bjgi8"]
+[ext_resource type="Texture2D" uid="uid://bo3clvrhjicen" path="res://Art/TestAssets/assignment.png" id="11_l30ei"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -79,6 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Border" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7176471, 0.54901963, 0.7176471, 1)
 
-[node name="Image" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+[node name="Background" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,46 +107,191 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_ofew4")
+texture = ExtResource("2_k5w2u")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Image" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+[node name="Shutters" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_356oj")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RoomLines" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_c7bke")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shade" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_u4gn2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Futon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/pencilTexScale = 1.9
+instance_shader_parameters/rotation = 7.25
+layout_mode = 1
+offset_left = 209.0
+offset_top = 179.0
+offset_right = 625.38
+offset_bottom = 428.0
+texture = ExtResource("5_c7bke")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Window" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/colorCorrection = 0.845
+instance_shader_parameters/pencilTexScale = 1.0
+instance_shader_parameters/rotation = 0.455
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 300.0
+offset_top = 7.0
+offset_right = -289.0
+offset_bottom = -331.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_i00fv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Door" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/pencilTexScale = 0.865
+instance_shader_parameters/rotation = 1.01
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = 125.0
+offset_right = -571.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_i00fv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dog" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 354.0
+offset_top = 244.0
+offset_right = -424.0
+offset_bottom = -107.58334
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_335po")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Noodles" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 509.0
+offset_top = 357.0
+offset_right = -241.22223
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_bjgi8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Assignment" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 230.0
+offset_right = -322.77783
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_l30ei")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObjects" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+z_index = 2
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 501.0
-offset_top = 376.0
-offset_right = 651.0
-offset_bottom = 466.0
+offset_left = 516.0
+offset_top = 362.0
+offset_right = 602.0
+offset_bottom = 414.0
 myText = "Ramen Noodles"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
 myObjectIcon = NodePath("../../../Control/VBoxContainer2/ColorRect/ObjectIcon")
 
-[node name="ClickableObject2" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Image" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+[node name="ClickableObject2" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+z_index = 2
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 440.67993
-offset_top = 186.40114
-offset_right = 535.5773
-offset_bottom = 276.40112
+offset_left = 479.0
+offset_top = 274.00003
+offset_right = 540.58203
+offset_bottom = 318.9977
 rotation = 1.010533
 myText = "Paper"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
 myObjectIcon = NodePath("../../../Control/VBoxContainer2/ColorRect2/ObjectIcon")
 
-[node name="ClickableObject3" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Image" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+[node name="ClickableObject3" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects" node_paths=PackedStringArray("textManager", "myObjectIcon") instance=ExtResource("2_ty2sy")]
+z_index = 2
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 339.0
-offset_top = 200.0
-offset_right = 485.03482
-offset_bottom = 290.0
+offset_left = 430.0
+offset_top = 278.0
+offset_right = 514.6499
+offset_bottom = 332.13806
 rotation = 1.9904027
 myText = "Dog"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
