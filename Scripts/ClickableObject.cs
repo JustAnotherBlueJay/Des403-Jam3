@@ -11,7 +11,7 @@ public partial class ClickableObject : Control
 
     //label to write text to
     [Export] TextManager textManager;
-    [Export] TextureRect myObjectIcon;
+    [Export] ObjectBox myObjectBox;
 
     public override void _Ready()
     {
@@ -25,7 +25,7 @@ public partial class ClickableObject : Control
         //disconnect from the buttons signal
         myButton.Pressed -= OnObjectClicked;
 
-        //show the objects icon
-        myObjectIcon.Visible = true;
+        //show the objects icon and change the outline
+        myObjectBox.OnObjectObtained();
     }
 }
