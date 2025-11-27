@@ -13,6 +13,8 @@ public partial class ClickableObject : Control
     [Export] TextManager textManager;
     [Export] TextureRect myObjectIcon;
 
+    public Action E_Clicked;
+
     public override void _Ready()
     {
         myButton.Pressed += OnObjectClicked;
@@ -20,6 +22,10 @@ public partial class ClickableObject : Control
 
     private void OnObjectClicked()
     {
+
+        //emmit the clicked signal
+        E_Clicked();
+
         //add this objects text to the output 
         textManager.AddEntry(myText);
         //disconnect from the buttons signal
