@@ -18,6 +18,7 @@ group_uniforms;
 varying vec4 modulate;
 varying vec2 noise_uv;
 
+varying vec2 world_squiggle_uv;
 #include "res://Scripts/Shaders/PencilShader/PencilShaderInclude.gdshaderinc"
 
 void vertex() {
@@ -25,6 +26,8 @@ void vertex() {
 
 	// Use world coordinates for scale-independent squiggles, offset by position to keep pattern attached to object
 	noise_uv = (VERTEX - MODEL_MATRIX[3].xy) / (vec2(textureSize(noise, 0)) * scale);
+	
+	
 }
 
 // Use irrational constants for unique squiggles every frame
@@ -40,7 +43,8 @@ void fragment() {
 	vec2 squiggle_uv = UV + direction * strength * 0.005;
 	
 	
-	vec4 pencil = pencil_fragment(TEXTURE, squiggle_uv, frame);
+	vec4 pencil = pencil_fragment(TEXTURE, squiggle_uv, frame, TEXTURE_PIXEL_SIZE);
+	
 	vec4 squiggle = texture(TEXTURE, squiggle_uv) * modulate;
 	
 	COLOR = pencil;
