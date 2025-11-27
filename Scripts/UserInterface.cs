@@ -3,7 +3,7 @@ using System;
 
 public partial class UserInterface : Control
 {
-	[Export] Control clickableObectsParent;
+	[Export] ClickableObject[] clickableObects;
 	[Export] Button continueButton;
 
 	//toatl number of clickable objects
@@ -15,9 +15,9 @@ public partial class UserInterface : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		numberOfObjects = clickableObectsParent.GetChildCount();
+		numberOfObjects = clickableObects.Length;
 
-		foreach (ClickableObject clickableObject in clickableObectsParent.GetChildren())
+		foreach (ClickableObject clickableObject in clickableObects)
 		{
 			clickableObject.E_Clicked += OnClickableObjectClicked;
 		}
