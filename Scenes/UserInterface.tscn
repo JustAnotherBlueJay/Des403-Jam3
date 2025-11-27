@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://6t7wthf03l6k"]
+[gd_scene load_steps=15 format=3 uid="uid://6t7wthf03l6k"]
 
 [ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="1_i00fv"]
 [ext_resource type="Texture2D" uid="uid://be4o0wwgcox1u" path="res://Art/TestAssets/BACKGROUND_WHITE.png" id="2_k5w2u"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://m731c83ex773" path="res://Art/TestAssets/window.png" id="7_i00fv"]
 [ext_resource type="Texture2D" uid="uid://b5ylh1qffa6lk" path="res://Art/TestAssets/door.png" id="8_i00fv"]
 [ext_resource type="Texture2D" uid="uid://wx11aw63g7fo" path="res://Art/TestAssets/dog.png" id="9_335po"]
+[ext_resource type="Texture2D" uid="uid://ceku2umc2jdty" path="res://Art/TestAssets/noodles.png" id="10_bjgi8"]
+[ext_resource type="Texture2D" uid="uid://bo3clvrhjicen" path="res://Art/TestAssets/assignment.png" id="11_l30ei"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -210,8 +212,43 @@ texture = ExtResource("9_335po")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Noodles" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 509.0
+offset_top = 357.0
+offset_right = -241.22223
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_bjgi8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Assignment" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("1_i00fv")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 230.0
+offset_right = -322.77783
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_l30ei")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="ClickableObjects" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -222,10 +259,10 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 508.0
-offset_top = 351.0
-offset_right = 583.0
-offset_bottom = 392.0
+offset_left = 516.0
+offset_top = 362.0
+offset_right = 602.0
+offset_bottom = 414.0
 myText = "Ramen Noodles"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
 myObjectIcon = NodePath("../../../Control/VBoxContainer2/ColorRect/ObjectIcon")
@@ -236,10 +273,10 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 487.0
-offset_top = 281.0
-offset_right = 548.58203
-offset_bottom = 325.99768
+offset_left = 479.0
+offset_top = 274.00003
+offset_right = 540.58203
+offset_bottom = 318.9977
 rotation = 1.010533
 myText = "Paper"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
@@ -251,10 +288,10 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 417.0
-offset_top = 300.0
-offset_right = 501.64987
-offset_bottom = 335.0583
+offset_left = 430.0
+offset_top = 278.0
+offset_right = 514.6499
+offset_bottom = 332.13806
 rotation = 1.9904027
 myText = "Dog"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")

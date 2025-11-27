@@ -1,11 +1,19 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cfdv08wbowq0b"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cfdv08wbowq0b"]
 
 [ext_resource type="Shader" uid="uid://be6v1o38f0sun" path="res://Scripts/Shaders/PencilShader/Pencil+Squiggle.gdshader" id="1_vwd4k"]
 [ext_resource type="Texture2D" uid="uid://kjs1p03swrw7" path="res://Scripts/Shaders/PencilShader/pencil.jpg" id="2_vwd4k"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vwd4k"]
+noise_type = 3
+frequency = 0.9935
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fimod"]
+noise = SubResource("FastNoiseLite_vwd4k")
+
 [resource]
 shader = ExtResource("1_vwd4k")
-shader_parameter/scale = Vector2(1, 1)
-shader_parameter/strength = 1.0
+shader_parameter/scale = Vector2(0.5, 0.5)
+shader_parameter/strength = 0.5
 shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_fimod")
 shader_parameter/u_patternTexture = ExtResource("2_vwd4k")
