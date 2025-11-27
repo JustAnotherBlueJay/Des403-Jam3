@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://6t7wthf03l6k"]
+[gd_scene load_steps=16 format=3 uid="uid://6t7wthf03l6k"]
 
 [ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="1_i00fv"]
+[ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_l30ei"]
 [ext_resource type="Texture2D" uid="uid://be4o0wwgcox1u" path="res://Art/TestAssets/BACKGROUND_WHITE.png" id="2_k5w2u"]
-[ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/ClickableObject.tscn" id="2_ty2sy"]
-[ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scenes/TextManager.cs" id="3_guah6"]
+[ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/UI Scenes/Objects/ClickableObject.tscn" id="2_ty2sy"]
+[ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scripts/TextManager.cs" id="3_guah6"]
 [ext_resource type="Texture2D" uid="uid://8spu0xir4ei8" path="res://icon.svg" id="3_ug47o"]
 [ext_resource type="Texture2D" uid="uid://ch036ahxu0utp" path="res://Art/TestAssets/shutters.png" id="4_356oj"]
 [ext_resource type="Texture2D" uid="uid://db6r2a1w1n2ov" path="res://Art/TestAssets/futon.png" id="5_c7bke"]
@@ -15,13 +16,16 @@
 [ext_resource type="Texture2D" uid="uid://ceku2umc2jdty" path="res://Art/TestAssets/noodles.png" id="10_bjgi8"]
 [ext_resource type="Texture2D" uid="uid://bo3clvrhjicen" path="res://Art/TestAssets/assignment.png" id="11_l30ei"]
 
-[node name="UI" type="Control"]
+[node name="UI" type="Control" node_paths=PackedStringArray("clickableObectsParent", "continueButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l30ei")
+clickableObectsParent = NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects")
+continueButton = NodePath("VBoxContainer/Lower Section/ContinueButton")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -87,16 +91,6 @@ color = Color(0.78775924, 0.78775924, 0.78775924, 1)
 [node name="ImageArea" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Border" type="ColorRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.7176471, 0.54901963, 0.7176471, 1)
 
 [node name="Background" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
 layout_mode = 1
@@ -387,3 +381,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_guah6")
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/Lower Section"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -47.5
+offset_right = -11.0
+offset_bottom = 45.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "CONTINUE"

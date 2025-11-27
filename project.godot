@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Des402-Jam3"
-run/main_scene="uid://6t7wthf03l6k"
+run/main_scene="uid://b20bg7xwgmr5d"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
