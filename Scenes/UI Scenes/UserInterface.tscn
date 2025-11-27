@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqx3de1cxtq7q"]
+[gd_scene load_steps=21 format=3 uid="uid://cqx3de1cxtq7q"]
 
 [ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="1_i00fv"]
 [ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_l30ei"]
@@ -16,8 +16,30 @@
 [ext_resource type="Texture2D" uid="uid://wx11aw63g7fo" path="res://Art/TestAssets/dog.png" id="9_335po"]
 [ext_resource type="Texture2D" uid="uid://ceku2umc2jdty" path="res://Art/TestAssets/noodles.png" id="10_bjgi8"]
 [ext_resource type="Texture2D" uid="uid://bo3clvrhjicen" path="res://Art/TestAssets/assignment.png" id="11_l30ei"]
+[ext_resource type="Shader" uid="uid://c8uf0nksn16wn" path="res://Scripts/Shaders/Shine/Shine.gdshader" id="17_urb6n"]
 
-[node name="UI" type="Control" node_paths=PackedStringArray("clickableObectsParent", "continueButton")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urb6n"]
+shader = ExtResource("17_urb6n")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlekf"]
+shader = ExtResource("17_urb6n")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73hai"]
+shader = ExtResource("17_urb6n")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[node name="UI" type="Control" node_paths=PackedStringArray("clickableObects", "continueButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l30ei")
-clickableObectsParent = NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects")
+clickableObects = [NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog/ClickableObject3"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Noodles/ClickableObject"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Assignment/ClickableObject2")]
 continueButton = NodePath("VBoxContainer/Lower Section/ContinueButton")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -123,6 +145,7 @@ offset_right = 848.0
 offset_bottom = 477.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("2_k5w2u")
 expand_mode = 1
 stretch_mode = 5
@@ -131,6 +154,7 @@ stretch_mode = 5
 layout_mode = 1
 offset_right = 848.0
 offset_bottom = 477.0
+mouse_filter = 2
 texture = ExtResource("4_356oj")
 expand_mode = 1
 stretch_mode = 4
@@ -139,6 +163,7 @@ stretch_mode = 4
 layout_mode = 1
 offset_right = 848.0
 offset_bottom = 477.0
+mouse_filter = 2
 texture = ExtResource("6_c7bke")
 expand_mode = 1
 stretch_mode = 5
@@ -147,6 +172,7 @@ stretch_mode = 5
 layout_mode = 1
 offset_right = 848.0
 offset_bottom = 477.0
+mouse_filter = 2
 texture = ExtResource("5_u4gn2")
 expand_mode = 1
 stretch_mode = 5
@@ -160,6 +186,7 @@ offset_left = 209.0
 offset_top = 179.0
 offset_right = 625.38
 offset_bottom = 428.0
+mouse_filter = 2
 texture = ExtResource("5_c7bke")
 expand_mode = 1
 stretch_mode = 4
@@ -174,6 +201,7 @@ offset_left = 300.0
 offset_top = 7.0
 offset_right = 559.0
 offset_bottom = 146.0
+mouse_filter = 2
 texture = ExtResource("7_i00fv")
 expand_mode = 1
 stretch_mode = 5
@@ -187,6 +215,7 @@ offset_left = 133.0
 offset_top = 125.0
 offset_right = 277.0
 offset_bottom = 383.0
+mouse_filter = 2
 texture = ExtResource("8_i00fv")
 expand_mode = 1
 stretch_mode = 5
@@ -200,9 +229,35 @@ offset_left = 354.0
 offset_top = 244.0
 offset_right = 424.0
 offset_bottom = 369.41666
+mouse_filter = 2
 texture = ExtResource("9_335po")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="DogShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog"]
+material = SubResource("ShaderMaterial_urb6n")
+layout_mode = 1
+offset_right = 70.0
+offset_bottom = 125.41666
+texture = ExtResource("9_335po")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject3" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("2_ty2sy")]
+z_index = 2
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 76.0
+offset_top = 34.0
+offset_right = 160.6499
+offset_bottom = 88.13806
+rotation = 1.9904027
+myText = "Dog"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Control/ObjectBoxes/ObjectBox3")
+shineTexture = NodePath("../DogShine")
 
 [node name="Noodles" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
 material = ExtResource("1_i00fv")
@@ -218,9 +273,38 @@ offset_right = -241.22223
 offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("10_bjgi8")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="NoodlesShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Noodles"]
+material = SubResource("ShaderMaterial_mlekf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_bjgi8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Noodles" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("2_ty2sy")]
+z_index = 2
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 93.0
+offset_bottom = 57.0
+myText = "Ramen Noodles"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Control/ObjectBoxes/ObjectBox")
+shineTexture = NodePath("../NoodlesShine")
 
 [node name="Assignment" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
 material = ExtResource("1_i00fv")
@@ -231,61 +315,36 @@ offset_left = 255.0
 offset_top = 230.0
 offset_right = 525.22217
 offset_bottom = 382.0
+mouse_filter = 2
 texture = ExtResource("11_l30ei")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ClickableObjects" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+[node name="AssignmentShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Assignment"]
+material = SubResource("ShaderMaterial_73hai")
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 270.22217
+offset_bottom = 152.0
+mouse_filter = 2
+texture = ExtResource("11_l30ei")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects" node_paths=PackedStringArray("textManager", "myObjectBox") instance=ExtResource("2_ty2sy")]
+[node name="ClickableObject2" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Assignment" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("2_ty2sy")]
 z_index = 2
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 516.0
-offset_top = 362.0
-offset_right = 602.0
-offset_bottom = 414.0
-myText = "Ramen Noodles"
-textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
-myObjectBox = NodePath("../../../Control/ObjectBoxes/ObjectBox")
-
-[node name="ClickableObject2" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects" node_paths=PackedStringArray("textManager", "myObjectBox") instance=ExtResource("2_ty2sy")]
-z_index = 2
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 479.0
-offset_top = 274.00003
-offset_right = 540.58203
-offset_bottom = 318.9977
+offset_left = 224.0
+offset_top = 44.00003
+offset_right = 285.58203
+offset_bottom = 88.99771
 rotation = 1.010533
 myText = "Paper"
 textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
 myObjectBox = NodePath("../../../Control/ObjectBoxes/ObjectBox2")
-
-[node name="ClickableObject3" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ClickableObjects" node_paths=PackedStringArray("textManager", "myObjectBox") instance=ExtResource("2_ty2sy")]
-z_index = 2
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 430.0
-offset_top = 278.0
-offset_right = 514.6499
-offset_bottom = 332.13806
-rotation = 1.9904027
-myText = "Dog"
-textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
-myObjectBox = NodePath("../../../Control/ObjectBoxes/ObjectBox3")
+shineTexture = NodePath("../AssignmentShine")
 
 [node name="Control" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
 layout_mode = 2
