@@ -1,0 +1,694 @@
+[gd_scene load_steps=34 format=3 uid="uid://c2d4pah2htb1w"]
+
+[ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_8i864"]
+[ext_resource type="Texture2D" uid="uid://dfb3v2ksyhpv8" path="res://Art/unobtained object ui.png" id="2_xoswa"]
+[ext_resource type="Script" uid="uid://kerb7b43hk34" path="res://Scripts/ObjectBox.cs" id="3_tbm1m"]
+[ext_resource type="Texture2D" uid="uid://be4o0wwgcox1u" path="res://Art/Scene1/Zeroed/BACKGROUND_WHITE.png" id="4_a2dqt"]
+[ext_resource type="Texture2D" uid="uid://btwmnqvqi5dw7" path="res://Art/Scene2/Not Zeroed/scene_2_0019_wall_line.png" id="5_x7mx1"]
+[ext_resource type="Texture2D" uid="uid://b5xy0var24tpw" path="res://Art/Scene2/Not Zeroed/scene_2_0017_wallandfloor_shade.png" id="6_ehwy1"]
+[ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="7_243ir"]
+[ext_resource type="Texture2D" uid="uid://dsy50bi6svbjs" path="res://Art/Scene2/Not Zeroed/scene_2_0016_chaur.png" id="7_ehlrj"]
+[ext_resource type="Texture2D" uid="uid://cho0wxnylhy6p" path="res://Art/Scene2/Not Zeroed/scene_2_0002_painting.png" id="8_243ir"]
+[ext_resource type="Texture2D" uid="uid://dqhhy42x16od7" path="res://Art/Scene2/Not Zeroed/scene_2_0015_window_sky.png" id="9_cxm0e"]
+[ext_resource type="Texture2D" uid="uid://c40qrib6y4jai" path="res://Art/Scene2/Not Zeroed/scene_2_0018_lamp.png" id="10_juta6"]
+[ext_resource type="Texture2D" uid="uid://csyahcxt52plt" path="res://Art/Scene2/Not Zeroed/scene_2_0011_diploma.png" id="11_161s1"]
+[ext_resource type="Texture2D" uid="uid://d2y3auq60h4y2" path="res://Art/Scene2/Not Zeroed/scene_2_0022_door_shade.png" id="12_8lc68"]
+[ext_resource type="Texture2D" uid="uid://basvbwcld1c6m" path="res://Art/Scene2/Zeroed/diploma.png" id="13_ehwy1"]
+[ext_resource type="Texture2D" uid="uid://exri70oetc8t" path="res://Art/Scene2/Zeroed/carpet.png" id="13_spraa"]
+[ext_resource type="Texture2D" uid="uid://bbhey05nm62ai" path="res://Art/Scene2/Not Zeroed/scene_2_0003_bed.png" id="14_q7244"]
+[ext_resource type="Texture2D" uid="uid://cl0v062k3uqg2" path="res://Art/Scene2/Not Zeroed/scene_2_0001_shelf.png" id="15_rquhh"]
+[ext_resource type="Shader" uid="uid://c8uf0nksn16wn" path="res://Scripts/Shaders/Shine/Shine.gdshader" id="16_spraa"]
+[ext_resource type="Texture2D" uid="uid://c7n4bum8uoffj" path="res://Art/Scene2/Not Zeroed/scene_2_0000_uniform.png" id="16_v3f8e"]
+[ext_resource type="Texture2D" uid="uid://dtcx1muepacku" path="res://Art/Scene2/Not Zeroed/scene_2_0005_dog.png" id="17_p63er"]
+[ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/UI Scenes/Objects/ClickableObject.tscn" id="17_q7244"]
+[ext_resource type="Texture2D" uid="uid://bvjkypfnma2a6" path="res://Art/Scene2/Not Zeroed/scene_2_0012_tableanddiploma_shadow.png" id="18_w3fys"]
+[ext_resource type="Texture2D" uid="uid://dg3i6s82lu7qs" path="res://Art/Scene2/Not Zeroed/scene_2_0007_drawer+mirror.png" id="19_sclnv"]
+[ext_resource type="Texture2D" uid="uid://bogpi164ss6kv" path="res://Art/Scene2/Not Zeroed/scene_2_0010_end_table.png" id="20_4ju4o"]
+[ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scripts/TextManager.cs" id="20_p63er"]
+[ext_resource type="Texture2D" uid="uid://btpw4wjbc2vr3" path="res://Art/Scene2/Not Zeroed/scene_2_0009_guitar.png" id="21_thwbi"]
+[ext_resource type="Texture2D" uid="uid://dahxvfeguelsl" path="res://Art/Scene2/Not Zeroed/scene_2_0021_shutters.png" id="22_2ggex"]
+[ext_resource type="Texture2D" uid="uid://cbekc4mba83as" path="res://Art/Scene2/Not Zeroed/scene_2_0020_window_frame.png" id="23_upa12"]
+[ext_resource type="Texture2D" uid="uid://ru44hb2enj3a" path="res://Art/Scene2/Zeroed/guitar.png" id="25_243ir"]
+[ext_resource type="Texture2D" uid="uid://cpdnyr2aw6dqp" path="res://Art/Scene2/Zeroed/uniform.png" id="28_ehlrj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehlrj"]
+shader = ExtResource("16_spraa")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_243ir"]
+shader = ExtResource("16_spraa")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxm0e"]
+shader = ExtResource("16_spraa")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[node name="UI" type="Control" node_paths=PackedStringArray("clickableObects", "continueButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8i864")
+clickableObects = [NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Diploma/ClickableObject"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Guitar/ClickableObject"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Uniform/ClickableObject")]
+continueButton = NodePath("VBoxContainer/Lower Section/ContinueButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14518473, 0.14915115, 0.3750107, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upper Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Upper Section"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left Icons" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ObjectBoxes" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xoswa")
+script = ExtResource("3_tbm1m")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox2" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xoswa")
+script = ExtResource("3_tbm1m")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox3" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xoswa")
+script = ExtResource("3_tbm1m")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageArea" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("4_a2dqt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WallLine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("5_x7mx1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shade" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("6_ehwy1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Chair" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.79
+instance_shader_parameters/pencilTexScale = 1.4
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("7_ehlrj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Painting" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("8_243ir")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Window" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.85
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("9_cxm0e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lamp" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.675
+instance_shader_parameters/pencilTexScale = 1.9
+instance_shader_parameters/rotation = 0.42
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("10_juta6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Diploma" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.95
+instance_shader_parameters/pencilTexScale = 3.465
+instance_shader_parameters/rotation = 2.98
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("11_161s1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Diploma" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("17_q7244")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 494.0
+offset_top = 98.0
+offset_right = 561.304
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+myText = "succeeded in studies"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox")
+shineTexture = NodePath("../DiplomaShineContainer/DiplomaShine")
+
+[node name="DiplomaShineContainer" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Diploma"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 69.0
+offset_top = -138.5
+offset_right = 137.0
+offset_bottom = -82.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DiplomaShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Diploma/DiplomaShineContainer"]
+material = SubResource("ShaderMaterial_ehlrj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("13_ehwy1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Door" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.85
+instance_shader_parameters/pencilTexScale = 5.695
+instance_shader_parameters/rotation = 0.355
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("12_8lc68")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Carpet" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/pencilTexScale = 0.665
+instance_shader_parameters/rotation = 0.995
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 183.0
+offset_top = 310.0
+offset_right = -526.3333
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("13_spraa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Bed" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.88
+instance_shader_parameters/pencilTexScale = 2.645
+instance_shader_parameters/rotation = 2.42
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("14_q7244")
+expand_mode = 1
+
+[node name="Shelf" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/pencilTexScale = 1.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("15_rquhh")
+expand_mode = 1
+
+[node name="Uniform" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_behavior_recursive = 1
+texture = ExtResource("16_v3f8e")
+expand_mode = 1
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Uniform" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("17_q7244")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 466.0
+offset_top = 292.0
+offset_right = 532.304
+offset_bottom = 358.223
+mouse_behavior_recursive = 2
+myText = "sign of employment"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox3")
+shineTexture = NodePath("../UniformShineContainer/UniformShine")
+
+[node name="UniformShineContainer" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Uniform"]
+anchors_preset = 0
+offset_left = 482.0
+offset_top = 298.0
+offset_right = 517.0
+offset_bottom = 338.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="UniformShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Uniform/UniformShineContainer"]
+material = SubResource("ShaderMaterial_243ir")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+texture = ExtResource("28_ehlrj")
+expand_mode = 1
+
+[node name="Dog" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.95
+instance_shader_parameters/pencilTexScale = 2.9
+instance_shader_parameters/rotation = 1.04
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("17_p63er")
+expand_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("18_w3fys")
+expand_mode = 1
+
+[node name="Drawer&Mirror" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.95
+instance_shader_parameters/pencilTexScale = 1.0
+instance_shader_parameters/rotation = 6.505
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("19_sclnv")
+expand_mode = 1
+
+[node name="Table" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("20_4ju4o")
+expand_mode = 1
+
+[node name="Guitar" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_243ir")
+instance_shader_parameters/colorCorrection = 0.745
+instance_shader_parameters/pencilTexScale = 1.3900000000000001
+instance_shader_parameters/rotation = 1.905
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("21_thwbi")
+expand_mode = 1
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Guitar" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("17_q7244")]
+layout_mode = 1
+offset_left = 296.0
+offset_top = 171.0
+offset_right = 276.856
+offset_bottom = 215.91998
+myText = "enjoying hobbies and has creative outlet"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox2")
+shineTexture = NodePath("../GuitarShineContainer/GuitarShine")
+
+[node name="GuitarShineContainer" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Guitar"]
+anchors_preset = 0
+offset_left = 296.0
+offset_top = 195.0
+offset_right = 347.0
+offset_bottom = 283.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="GuitarShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Guitar/GuitarShineContainer"]
+material = SubResource("ShaderMaterial_cxm0e")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -69.0
+offset_right = 27.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_243ir")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Shutters" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("22_2ggex")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Border" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("23_upa12")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Right Icons" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ObjectBoxes" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xoswa")
+script = ExtResource("3_tbm1m")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 17.0
+offset_right = -22.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_ehwy1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectBox2" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xoswa")
+script = ExtResource("3_tbm1m")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.01508
+offset_top = 80.29883
+offset_right = -45.91252
+offset_bottom = 112.82196
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.9350141
+mouse_filter = 2
+texture = ExtResource("25_243ir")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectBox3" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xoswa")
+script = ExtResource("3_tbm1m")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox3"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_ehlrj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lower Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Dialogue Area" type="Control" parent="VBoxContainer/Lower Section"]
+layout_mode = 1
+anchor_left = 0.25100002
+anchor_right = 0.749
+anchor_bottom = 1.0
+offset_left = 0.079956055
+offset_right = -0.080078125
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextManager" type="RichTextLabel" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_p63er")
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/Lower Section"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -47.5
+offset_right = -11.0
+offset_bottom = 45.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "CONTINUE"
