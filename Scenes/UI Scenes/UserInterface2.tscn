@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c2d4pah2htb1w"]
+[gd_scene load_steps=36 format=3 uid="uid://c2d4pah2htb1w"]
 
 [ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_8i864"]
 [ext_resource type="Texture2D" uid="uid://dfb3v2ksyhpv8" path="res://Art/unobtained object ui.png" id="2_xoswa"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://cbekc4mba83as" path="res://Art/Scene2/Not Zeroed/scene_2_0020_window_frame.png" id="23_upa12"]
 [ext_resource type="Texture2D" uid="uid://ru44hb2enj3a" path="res://Art/Scene2/Zeroed/guitar.png" id="25_243ir"]
 [ext_resource type="Texture2D" uid="uid://cpdnyr2aw6dqp" path="res://Art/Scene2/Zeroed/uniform.png" id="28_ehlrj"]
+[ext_resource type="Theme" uid="uid://cxicaxyktwlcv" path="res://Themes/ContinueButtonTheme.tres" id="31_juta6"]
+[ext_resource type="Texture2D" uid="uid://dmmyb5jpa3dqa" path="res://Art/continue button.png" id="32_161s1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ehlrj"]
 shader = ExtResource("16_spraa")
@@ -52,7 +54,7 @@ shader_parameter/shine_progress = 0.0
 shader_parameter/shine_size = 0.1
 shader_parameter/shine_angle = 45.0
 
-[node name="UI" type="Control" node_paths=PackedStringArray("clickableObects", "continueButton")]
+[node name="UI2" type="Control" node_paths=PackedStringArray("clickableObects", "continueButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -691,4 +693,5 @@ offset_right = -11.0
 offset_bottom = 45.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "CONTINUE"
+theme = ExtResource("31_juta6")
+icon = ExtResource("32_161s1")

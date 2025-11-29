@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dgejw2vhyr5ke"]
+[gd_scene load_steps=35 format=3 uid="uid://dgejw2vhyr5ke"]
 
 [ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_ryqm5"]
 [ext_resource type="Texture2D" uid="uid://dfb3v2ksyhpv8" path="res://Art/unobtained object ui.png" id="2_8koqq"]
@@ -28,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://c4h3t5umgb13d" path="res://Art/Scene3/Not Zeroed/scene-3_0020_dog.png" id="19_16okc"]
 [ext_resource type="Texture2D" uid="uid://8njpiws5sbo6" path="res://Art/Scene3/Zeroed/scene-3_0017_partner.png" id="20_fh186"]
 [ext_resource type="Texture2D" uid="uid://d8wj7om2el4u" path="res://Art/Scene3/Not Zeroed/scene-3_0013_Layer-10.png" id="20_ryqm5"]
+[ext_resource type="Theme" uid="uid://cxicaxyktwlcv" path="res://Themes/ContinueButtonTheme.tres" id="30_8koqq"]
 [ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scripts/TextManager.cs" id="30_ghgnx"]
+[ext_resource type="Texture2D" uid="uid://dmmyb5jpa3dqa" path="res://Art/continue button.png" id="31_5w0kp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ryqm5"]
 shader = ExtResource("14_2rxgk")
@@ -258,6 +260,7 @@ stretch_mode = 5
 
 [node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Suitcase" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("13_21xpl")]
 layout_mode = 1
+anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 218.0
@@ -320,6 +323,7 @@ stretch_mode = 5
 
 [node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ComputerDesk" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("13_21xpl")]
 layout_mode = 1
+anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 266.0
@@ -456,6 +460,7 @@ stretch_mode = 4
 
 [node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Partner" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("13_21xpl")]
 layout_mode = 1
+anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 482.0
@@ -481,7 +486,7 @@ stretch_mode = 5
 
 [node name="Bed" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
 material = ExtResource("7_bcl5m")
-instance_shader_parameters/pencilTexScale = 1.8199999999999998
+instance_shader_parameters/pencilTexScale = 1.82
 instance_shader_parameters/rotation = 0.78
 layout_mode = 1
 offset_right = 848.0
@@ -643,4 +648,5 @@ offset_right = -11.0
 offset_bottom = 45.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "CONTINUE"
+theme = ExtResource("30_8koqq")
+icon = ExtResource("31_5w0kp")

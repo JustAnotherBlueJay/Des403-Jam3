@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cqx3de1cxtq7q"]
+[gd_scene load_steps=30 format=3 uid="uid://cqx3de1cxtq7q"]
 
 [ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_upqrc"]
 [ext_resource type="Texture2D" uid="uid://dfb3v2ksyhpv8" path="res://Art/unobtained object ui.png" id="2_ofoue"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://ceku2umc2jdty" path="res://Art/Scene1/Zeroed/noodles.png" id="18_1rf3j"]
 [ext_resource type="Texture2D" uid="uid://bo3clvrhjicen" path="res://Art/Scene1/Zeroed/assignment.png" id="19_od0ew"]
 [ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scripts/TextManager.cs" id="20_3fotg"]
+[ext_resource type="Theme" uid="uid://cxicaxyktwlcv" path="res://Themes/ContinueButtonTheme.tres" id="21_e6d8b"]
+[ext_resource type="Texture2D" uid="uid://dmmyb5jpa3dqa" path="res://Art/continue button.png" id="21_ofoue"]
 
 [sub_resource type="Shader" id="Shader_7b8dr"]
 code = "shader_type canvas_item;
@@ -585,4 +587,5 @@ offset_right = -11.0
 offset_bottom = 45.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "CONTINUE"
+theme = ExtResource("21_e6d8b")
+icon = ExtResource("21_ofoue")
