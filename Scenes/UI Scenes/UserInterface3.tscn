@@ -1,0 +1,646 @@
+[gd_scene load_steps=33 format=3 uid="uid://dgejw2vhyr5ke"]
+
+[ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_ryqm5"]
+[ext_resource type="Texture2D" uid="uid://dfb3v2ksyhpv8" path="res://Art/unobtained object ui.png" id="2_8koqq"]
+[ext_resource type="Script" uid="uid://kerb7b43hk34" path="res://Scripts/ObjectBox.cs" id="3_5w0kp"]
+[ext_resource type="Texture2D" uid="uid://be4o0wwgcox1u" path="res://Art/Scene1/Zeroed/BACKGROUND_WHITE.png" id="4_mjekr"]
+[ext_resource type="Texture2D" uid="uid://b1b02m2n2pf71" path="res://Art/Scene3/Not Zeroed/scene-3_0024_wall_line.png" id="5_ofatm"]
+[ext_resource type="Texture2D" uid="uid://dub6jsxpucb57" path="res://Art/Scene3/Not Zeroed/scene-3_0022_wallandfloor_shade.png" id="6_7xku5"]
+[ext_resource type="Texture2D" uid="uid://b6lthsqn50lq7" path="res://Art/Scene3/Not Zeroed/scene-3_0010_door_shade.png" id="6_b20mc"]
+[ext_resource type="Texture2D" uid="uid://d3avxays2rvk8" path="res://Art/Scene3/Not Zeroed/scene-3_0002_drawer+mirror.png" id="6_ofatm"]
+[ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="7_bcl5m"]
+[ext_resource type="Texture2D" uid="uid://itp2sul80nkn" path="res://Art/Scene3/Not Zeroed/scene-3_0011_carpet_colour.png" id="7_g15ov"]
+[ext_resource type="Texture2D" uid="uid://bl0l3kic4p12b" path="res://Art/Scene3/Not Zeroed/scene-3_0000_window_frame.png" id="7_ktvc8"]
+[ext_resource type="Texture2D" uid="uid://dtcyj72vybasi" path="res://Art/Scene3/Not Zeroed/scene-3_0001_shutters.png" id="8_nonuv"]
+[ext_resource type="Texture2D" uid="uid://b6mph50ridh8y" path="res://Art/Scene3/Not Zeroed/scene-3_0023_window_sky.png" id="8_ovmeo"]
+[ext_resource type="Texture2D" uid="uid://c3lekd7m4axe0" path="res://Art/Scene3/Not Zeroed/scene-3_0007_painting.png" id="8_wx72f"]
+[ext_resource type="Texture2D" uid="uid://d180a77apmb3" path="res://Art/Scene3/Not Zeroed/scene-3_0009_suitcase.png" id="9_vy6xf"]
+[ext_resource type="Texture2D" uid="uid://cfvidy4vstk7a" path="res://Art/Scene3/Not Zeroed/scene-3_0006_computer_desk.png" id="11_yku8r"]
+[ext_resource type="Texture2D" uid="uid://bxo75ercdyidw" path="res://Art/Scene3/Not Zeroed/scene-3_0003_guitar.png" id="12_7xku5"]
+[ext_resource type="Texture2D" uid="uid://b3lt3d0mr0om7" path="res://Art/Scene3/Zeroed/scene-3_0010_suitcase.png" id="13_16okc"]
+[ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/UI Scenes/Objects/ClickableObject.tscn" id="13_21xpl"]
+[ext_resource type="Texture2D" uid="uid://f7h38nh81kg3" path="res://Art/Scene3/Not Zeroed/scene-3_0004_shelf.png" id="13_ovmeo"]
+[ext_resource type="Shader" uid="uid://c8uf0nksn16wn" path="res://Scripts/Shaders/Shine/Shine.gdshader" id="14_2rxgk"]
+[ext_resource type="Texture2D" uid="uid://bgob1825c24qp" path="res://Art/Scene3/Not Zeroed/scene-3_0005_chaur.png" id="14_fh186"]
+[ext_resource type="Texture2D" uid="uid://cb2uel2xy2gy" path="res://Art/Scene3/Not Zeroed/scene-3_0008_end_table.png" id="15_16okc"]
+[ext_resource type="Texture2D" uid="uid://ckrwvyrps5xqs" path="res://Art/Scene3/Zeroed/scene-3_0007_computer_desk.png" id="15_ryqm5"]
+[ext_resource type="Texture2D" uid="uid://bo6fd1ppg42ep" path="res://Art/Scene3/Not Zeroed/scene-3_0016_partner.png" id="18_fh186"]
+[ext_resource type="Texture2D" uid="uid://c4h3t5umgb13d" path="res://Art/Scene3/Not Zeroed/scene-3_0020_dog.png" id="19_16okc"]
+[ext_resource type="Texture2D" uid="uid://8njpiws5sbo6" path="res://Art/Scene3/Zeroed/scene-3_0017_partner.png" id="20_fh186"]
+[ext_resource type="Texture2D" uid="uid://d8wj7om2el4u" path="res://Art/Scene3/Not Zeroed/scene-3_0013_Layer-10.png" id="20_ryqm5"]
+[ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scripts/TextManager.cs" id="30_ghgnx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryqm5"]
+shader = ExtResource("14_2rxgk")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8koqq"]
+shader = ExtResource("14_2rxgk")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16okc"]
+shader = ExtResource("14_2rxgk")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 19.20000028610304
+
+[node name="UI" type="Control" node_paths=PackedStringArray("clickableObects", "continueButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ryqm5")
+clickableObects = [NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/ComputerDesk/ClickableObject"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Partner/ClickableObject"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Suitcase/ClickableObject")]
+continueButton = NodePath("VBoxContainer/Lower Section/ContinueButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14518473, 0.14915115, 0.3750107, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upper Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Upper Section"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left Icons" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ObjectBoxes" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8koqq")
+script = ExtResource("3_5w0kp")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox2" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8koqq")
+script = ExtResource("3_5w0kp")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox3" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8koqq")
+script = ExtResource("3_5w0kp")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageArea" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("4_mjekr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WallLine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("5_ofatm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Wall&FloorShade" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("6_7xku5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Door" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/colorCorrection = 0.77
+instance_shader_parameters/pencilTexScale = 1.625
+instance_shader_parameters/rotation = -0.595
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("6_b20mc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Window" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/colorCorrection = 0.87
+instance_shader_parameters/pencilTexScale = 0.97
+instance_shader_parameters/rotation = 0.145
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("8_ovmeo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Carpet" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/colorCorrection = 0.95
+instance_shader_parameters/pencilTexScale = 3.205
+instance_shader_parameters/rotation = -1.72
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("7_g15ov")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Painting" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("8_wx72f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Suitcase" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/pencilTexScale = 1.475
+instance_shader_parameters/rotation = 0.28
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("9_vy6xf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Suitcase" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("13_21xpl")]
+layout_mode = 1
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 218.0
+offset_top = 322.0
+offset_right = 304.0
+offset_bottom = 421.0
+myText = "always on the go seeing the world"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox3")
+shineTexture = NodePath("../SuitcaseShineContainer/SuitcaseShine")
+
+[node name="SuitcaseShineContainer" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Suitcase"]
+anchors_preset = 0
+offset_left = 212.0
+offset_top = 319.0
+offset_right = 308.0
+offset_bottom = 423.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="SuitcaseShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Suitcase/SuitcaseShineContainer"]
+material = SubResource("ShaderMaterial_ryqm5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_16okc")
+expand_mode = 1
+
+[node name="Drawer&Mirror" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/pencilTexScale = 1.225
+instance_shader_parameters/rotation = 1.7
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("6_ofatm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ComputerDesk" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/pencilTexScale = 1.355
+instance_shader_parameters/rotation = 0.355
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("11_yku8r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ComputerDesk" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("13_21xpl")]
+layout_mode = 1
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 266.0
+offset_top = 133.0
+offset_right = 363.0
+offset_bottom = 261.0
+mouse_behavior_recursive = 2
+myText = "social media posts and chats with friends."
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox2")
+shineTexture = NodePath("../ConputerDeskShineContainer/TextureRect")
+
+[node name="ConputerDeskShineContainer" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ComputerDesk"]
+anchors_preset = 0
+offset_left = 258.0
+offset_top = 124.0
+offset_right = 508.0
+offset_bottom = 326.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/ComputerDesk/ConputerDeskShineContainer"]
+material = SubResource("ShaderMaterial_8koqq")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.035
+anchor_right = 0.5
+anchor_bottom = 0.693
+offset_top = -0.07000017
+offset_right = 1.0
+offset_bottom = 0.01399231
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_ryqm5")
+expand_mode = 1
+
+[node name="Guitar" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/colorCorrection = 0.835
+instance_shader_parameters/pencilTexScale = 1.31
+instance_shader_parameters/rotation = 0.265
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("12_7xku5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shelf" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/colorCorrection = 0.8
+instance_shader_parameters/pencilTexScale = 0.575
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("13_ovmeo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Chair" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/colorCorrection = 0.78
+instance_shader_parameters/pencilTexScale = 1.62
+instance_shader_parameters/rotation = 1.49
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("14_fh186")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EndTable" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/pencilTexScale = 1.17
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("15_16okc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Partner" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/colorCorrection = 1.22
+instance_shader_parameters/pencilTexScale = 2.475
+instance_shader_parameters/rotation = 0.0
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("18_fh186")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PartnerShineContainer" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Partner"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 481.0
+offset_top = 126.0
+offset_right = 591.0
+offset_bottom = 339.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="PartnerShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Partner/PartnerShineContainer"]
+material = SubResource("ShaderMaterial_16okc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+texture = ExtResource("20_fh186")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Partner" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("13_21xpl")]
+layout_mode = 1
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 482.0
+offset_top = 122.0
+offset_right = 531.0
+offset_bottom = 271.0
+myText = "loving partner"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox")
+shineTexture = NodePath("../PartnerShineContainer/PartnerShine")
+
+[node name="Dog" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("19_16okc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Bed" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_bcl5m")
+instance_shader_parameters/pencilTexScale = 1.8199999999999998
+instance_shader_parameters/rotation = 0.78
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("20_ryqm5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WindowFrame" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("7_ktvc8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shutters" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("8_nonuv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Right Icons" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ObjectBoxes" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8koqq")
+script = ExtResource("3_5w0kp")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 17.0
+offset_right = -22.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_fh186")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectBox2" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8koqq")
+script = ExtResource("3_5w0kp")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_ryqm5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectBox3" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8koqq")
+script = ExtResource("3_5w0kp")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox3"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_16okc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lower Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Dialogue Area" type="Control" parent="VBoxContainer/Lower Section"]
+layout_mode = 1
+anchor_left = 0.25100002
+anchor_right = 0.749
+anchor_bottom = 1.0
+offset_left = 0.079956055
+offset_right = -0.080078125
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextManager" type="RichTextLabel" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("30_ghgnx")
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/Lower Section"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -47.5
+offset_right = -11.0
+offset_bottom = 45.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "CONTINUE"

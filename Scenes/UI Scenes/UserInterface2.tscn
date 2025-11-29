@@ -487,7 +487,7 @@ expand_mode = 1
 [node name="Guitar" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
 material = ExtResource("7_243ir")
 instance_shader_parameters/colorCorrection = 0.745
-instance_shader_parameters/pencilTexScale = 1.3900000000000001
+instance_shader_parameters/pencilTexScale = 1.39
 instance_shader_parameters/rotation = 1.905
 layout_mode = 1
 anchors_preset = 15
