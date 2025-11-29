@@ -1,0 +1,588 @@
+[gd_scene load_steps=28 format=3 uid="uid://cqx3de1cxtq7q"]
+
+[ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_upqrc"]
+[ext_resource type="Texture2D" uid="uid://dfb3v2ksyhpv8" path="res://Art/unobtained object ui.png" id="2_ofoue"]
+[ext_resource type="Script" uid="uid://kerb7b43hk34" path="res://Scripts/ObjectBox.cs" id="3_e6d8b"]
+[ext_resource type="Texture2D" uid="uid://be4o0wwgcox1u" path="res://Art/Scene1/Zeroed/BACKGROUND_WHITE.png" id="4_evdm5"]
+[ext_resource type="Texture2D" uid="uid://kjs1p03swrw7" path="res://Scripts/Shaders/PencilShader/pencil.jpg" id="5_8xnwd"]
+[ext_resource type="Texture2D" uid="uid://dyq1e64pjnkbd" path="res://Art/Scene1/Not Zeroed/scene_1_resize_0014_carpet_colour.png" id="6_3g2j2"]
+[ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="7_6t1lf"]
+[ext_resource type="Texture2D" uid="uid://pt6o40mgx802" path="res://Art/Scene1/Not Zeroed/scene_1_resize_0005_box_colour.png" id="8_32pru"]
+[ext_resource type="Texture2D" uid="uid://ch036ahxu0utp" path="res://Art/Scene1/Zeroed/shutters.png" id="9_ylo0u"]
+[ext_resource type="Texture2D" uid="uid://ccxiea5o8siqx" path="res://Art/Scene1/Zeroed/wall_line.png" id="10_p8ydl"]
+[ext_resource type="Texture2D" uid="uid://b0cf6cmel7paj" path="res://Art/Scene1/Zeroed/wallandfloor_shade.png" id="11_kj6my"]
+[ext_resource type="Texture2D" uid="uid://db6r2a1w1n2ov" path="res://Art/Scene1/Zeroed/futon.png" id="12_86rxm"]
+[ext_resource type="Texture2D" uid="uid://m731c83ex773" path="res://Art/Scene1/Zeroed/window.png" id="13_0yrxf"]
+[ext_resource type="Texture2D" uid="uid://b5ylh1qffa6lk" path="res://Art/Scene1/Zeroed/door.png" id="14_fsl4v"]
+[ext_resource type="Texture2D" uid="uid://wx11aw63g7fo" path="res://Art/Scene1/Zeroed/dog.png" id="15_kae52"]
+[ext_resource type="Shader" uid="uid://c8uf0nksn16wn" path="res://Scripts/Shaders/Shine/Shine.gdshader" id="16_ysrmn"]
+[ext_resource type="PackedScene" uid="uid://bvc6n8cw6ucu6" path="res://Scenes/UI Scenes/Objects/ClickableObject.tscn" id="17_t1656"]
+[ext_resource type="Texture2D" uid="uid://ceku2umc2jdty" path="res://Art/Scene1/Zeroed/noodles.png" id="18_1rf3j"]
+[ext_resource type="Texture2D" uid="uid://bo3clvrhjicen" path="res://Art/Scene1/Zeroed/assignment.png" id="19_od0ew"]
+[ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scripts/TextManager.cs" id="20_3fotg"]
+
+[sub_resource type="Shader" id="Shader_7b8dr"]
+code = "shader_type canvas_item;
+render_mode world_vertex_coords;
+
+group_uniforms Squiggle;
+/**
+ * Noise texture scale
+ * By default, the noise texture's size in world coordinates is set by its resolution
+*/
+uniform vec2 scale = vec2(1.0);
+uniform float strength = 1.0;
+/**
+ * Number of squiggle frames per second
+*/
+uniform float fps = 6.0;
+uniform sampler2D noise : filter_linear, repeat_enable;
+group_uniforms;
+
+varying vec4 modulate;
+varying vec2 noise_uv;
+
+varying vec2 world_squiggle_uv;
+#include \"res://Scripts/Shaders/PencilShader/PencilShaderInclude.gdshaderinc\"
+
+void vertex() {
+	modulate = COLOR;
+
+	// Use world coordinates for scale-independent squiggles, offset by position to keep pattern attached to object
+	noise_uv = (VERTEX - MODEL_MATRIX[3].xy) / (vec2(textureSize(noise, 0)) * scale);
+	
+	
+}
+
+// Use irrational constants for unique squiggles every frame
+#define offset_multiplier vec2(PI, E)
+
+void fragment() {
+	
+	float frame = floor(TIME * fps);
+	
+	vec2 noise_offset = vec2(floor(frame)) * offset_multiplier;
+	float noise_sample = texture(noise, noise_uv + noise_offset).r * 4.0 * PI;
+	vec2 direction = vec2(cos(noise_sample), sin(noise_sample));
+	vec2 squiggle_uv = UV + direction * strength * 0.005;
+	
+	
+	vec4 pencil = pencil_fragment(TEXTURE, squiggle_uv, frame, TEXTURE_PIXEL_SIZE);
+	
+	vec4 squiggle = texture(TEXTURE, squiggle_uv) * modulate;
+	
+	COLOR = pencil;
+	//COLOR.r = min(squiggle.r, pencil.r);
+	//COLOR.g = min(squiggle.g, pencil.g);
+	//COLOR.b = min(squiggle.b, pencil.b);
+	
+	
+	//COLOR = pencil_fragment(TEXTURE, UV);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vwd4k"]
+noise_type = 3
+frequency = 0.9935
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fimod"]
+noise = SubResource("FastNoiseLite_vwd4k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_usn8t"]
+shader = SubResource("Shader_7b8dr")
+shader_parameter/scale = Vector2(0.5, 0.5)
+shader_parameter/strength = 0.25
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_fimod")
+shader_parameter/u_patternTexture = ExtResource("5_8xnwd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urb6n"]
+shader = ExtResource("16_ysrmn")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlekf"]
+shader = ExtResource("16_ysrmn")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73hai"]
+shader = ExtResource("16_ysrmn")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[node name="UI" type="Control" node_paths=PackedStringArray("clickableObects", "continueButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_upqrc")
+clickableObects = [NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog/ClickableObject3"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Noodles/ClickableObject"), NodePath("VBoxContainer/Upper Section/HBoxContainer/ImageArea/Assignment/ClickableObject2")]
+continueButton = NodePath("VBoxContainer/Lower Section/ContinueButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14518473, 0.14915115, 0.3750107, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upper Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Upper Section"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left Icons" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ObjectBoxes" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ofoue")
+script = ExtResource("3_e6d8b")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox2" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ofoue")
+script = ExtResource("3_e6d8b")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox3" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ofoue")
+script = ExtResource("3_e6d8b")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Left Icons/ObjectBoxes/ObjectBox3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageArea" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("4_evdm5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Carpet" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = SubResource("ShaderMaterial_usn8t")
+instance_shader_parameters/pencilTexScale = 2.45
+instance_shader_parameters/rotation = -1.71
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_3g2j2")
+expand_mode = 1
+
+[node name="Boxes" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_6t1lf")
+instance_shader_parameters/colorCorrection = 1.005
+instance_shader_parameters/pencilTexScale = 2.37
+instance_shader_parameters/rotation = -1.255
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_32pru")
+expand_mode = 1
+
+[node name="Shutters" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+mouse_filter = 2
+texture = ExtResource("9_ylo0u")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RoomLines" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+mouse_filter = 2
+texture = ExtResource("10_p8ydl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shade" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+layout_mode = 1
+offset_right = 848.0
+offset_bottom = 477.0
+mouse_filter = 2
+texture = ExtResource("11_kj6my")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Futon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_6t1lf")
+instance_shader_parameters/pencilTexScale = 1.9
+instance_shader_parameters/rotation = 7.25
+layout_mode = 1
+offset_left = 209.0
+offset_top = 179.0
+offset_right = 625.38
+offset_bottom = 428.0
+mouse_filter = 2
+texture = ExtResource("12_86rxm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Window" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_6t1lf")
+instance_shader_parameters/colorCorrection = 0.81
+instance_shader_parameters/pencilTexScale = 0.63
+instance_shader_parameters/rotation = 0.355
+layout_mode = 1
+offset_left = 300.0
+offset_top = 7.0
+offset_right = 559.0
+offset_bottom = 146.0
+mouse_filter = 2
+texture = ExtResource("13_0yrxf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Door" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_6t1lf")
+instance_shader_parameters/pencilTexScale = 0.865
+instance_shader_parameters/rotation = 1.01
+layout_mode = 1
+offset_left = 133.0
+offset_top = 125.0
+offset_right = 277.0
+offset_bottom = 383.0
+mouse_filter = 2
+texture = ExtResource("14_fsl4v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dog" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_6t1lf")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+offset_left = 354.0
+offset_top = 244.0
+offset_right = 424.0
+offset_bottom = 369.41666
+mouse_filter = 2
+texture = ExtResource("15_kae52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DogShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog"]
+material = SubResource("ShaderMaterial_urb6n")
+layout_mode = 1
+offset_right = 70.0
+offset_bottom = 125.41666
+texture = ExtResource("15_kae52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject3" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("17_t1656")]
+z_index = 2
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 76.0
+offset_top = 34.0
+offset_right = 160.6499
+offset_bottom = 88.13806
+rotation = 1.9904027
+myText = "looking after a puppy takes a lot of time and money"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox3")
+shineTexture = NodePath("../DogShine")
+
+[node name="Noodles" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_6t1lf")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 509.0
+offset_top = 357.0
+offset_right = -241.22223
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_1rf3j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NoodlesShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Noodles"]
+material = SubResource("ShaderMaterial_mlekf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_1rf3j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Noodles" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("17_t1656")]
+z_index = 2
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 93.0
+offset_bottom = 57.0
+myText = "cheap but not the healthiest option"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox")
+shineTexture = NodePath("../NoodlesShine")
+
+[node name="Assignment" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
+material = ExtResource("7_6t1lf")
+instance_shader_parameters/pencilTexScale = 0.39
+instance_shader_parameters/rotation = 1.755
+layout_mode = 1
+offset_left = 449.0
+offset_top = 282.0
+offset_right = 510.0
+offset_bottom = 343.0
+mouse_filter = 2
+texture = ExtResource("19_od0ew")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AssignmentShine" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Assignment"]
+material = SubResource("ShaderMaterial_73hai")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_od0ew")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClickableObject2" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Assignment" node_paths=PackedStringArray("textManager", "myObjectBox", "shineTexture") instance=ExtResource("17_t1656")]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.999996
+offset_top = -13.999998
+offset_right = 40.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.010533
+myText = "extra workload aiming for a future"
+textManager = NodePath("../../../../../Lower Section/Dialogue Area/TextManager")
+myObjectBox = NodePath("../../../Right Icons/ObjectBoxes/ObjectBox2")
+shineTexture = NodePath("../AssignmentShine")
+
+[node name="Right Icons" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ObjectBoxes" type="VBoxContainer" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectBox" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ofoue")
+script = ExtResource("3_e6d8b")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 17.0
+offset_right = -22.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_1rf3j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectBox2" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ofoue")
+script = ExtResource("3_e6d8b")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_od0ew")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectBox3" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ofoue")
+script = ExtResource("3_e6d8b")
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/Right Icons/ObjectBoxes/ObjectBox3"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_kae52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lower Section" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Dialogue Area" type="Control" parent="VBoxContainer/Lower Section"]
+layout_mode = 1
+anchor_left = 0.25100002
+anchor_right = 0.749
+anchor_bottom = 1.0
+offset_left = 0.079956055
+offset_right = -0.080078125
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextManager" type="RichTextLabel" parent="VBoxContainer/Lower Section/Dialogue Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_3fotg")
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/Lower Section"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -47.5
+offset_right = -11.0
+offset_bottom = 45.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "CONTINUE"

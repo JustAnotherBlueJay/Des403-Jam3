@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b20bg7xwgmr5d"]
 
 [ext_resource type="Script" uid="uid://vc048yrwbd2f" path="res://Scripts/GameManager.cs" id="1_tr2i4"]
-[ext_resource type="PackedScene" uid="uid://6t7wthf03l6k" path="res://Scenes/UI Scenes/UserInterface.tscn" id="2_nhkr4"]
-[ext_resource type="PackedScene" uid="uid://bejl8bul3kuc1" path="res://Scenes/TEST.tscn" id="3_nhkr4"]
+[ext_resource type="PackedScene" uid="uid://cqx3de1cxtq7q" path="res://Scenes/UI Scenes/UserInterface1.tscn" id="2_nhkr4"]
+[ext_resource type="PackedScene" uid="uid://c2d4pah2htb1w" path="res://Scenes/UI Scenes/UserInterface2.tscn" id="3_7rqgy"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -12,4 +12,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tr2i4")
-gameScenes = Array[PackedScene]([ExtResource("2_nhkr4"), ExtResource("3_nhkr4")])
+gameScenes = Array[PackedScene]([ExtResource("2_nhkr4"), ExtResource("3_7rqgy")])

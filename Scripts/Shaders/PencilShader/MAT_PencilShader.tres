@@ -12,8 +12,8 @@ noise = SubResource("FastNoiseLite_vwd4k")
 
 [resource]
 shader = ExtResource("1_vwd4k")
-shader_parameter/scale = Vector2(0.5, 0.5)
-shader_parameter/strength = 0.5
+shader_parameter/scale = Vector2(0.25, 0.25)
+shader_parameter/strength = 0.25
 shader_parameter/fps = 6.0
 shader_parameter/noise = SubResource("NoiseTexture2D_fimod")
 shader_parameter/u_patternTexture = ExtResource("2_vwd4k")
