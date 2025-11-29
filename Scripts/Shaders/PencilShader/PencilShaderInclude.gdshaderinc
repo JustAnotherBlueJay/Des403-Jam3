@@ -28,7 +28,7 @@ vec4 pencil_fragment(sampler2D texture, vec2 uv, float frame, vec2 texture_pixel
 	vec4 base_color = texture(texture, uv);
 	//UV * X scales the texture, texture(..) * X brightens the texture
 	vec4 pattern_color = texture(u_patternTexture,pattern_uv * pencilTexScale) ;
-	
+	float intensity = (pattern_color.r + pattern_color.g + pattern_color.b) / 4.0;
 	vec4 return_color = base_color / pattern_color;
 	return_color.rgb = return_color.rgb * colorCorrection;
 	return return_color;

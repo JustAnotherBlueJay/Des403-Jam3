@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://00sboc01nbje"]
+
+[ext_resource type="Script" uid="uid://c36dcmnalgkec" path="res://Scripts/ReflectionScene.cs" id="1_i0flf"]
+[ext_resource type="Material" uid="uid://cfdv08wbowq0b" path="res://Scripts/Shaders/PencilShader/MAT_PencilShader.tres" id="2_5cy1d"]
+[ext_resource type="Texture2D" uid="uid://cr3cg1jiqnhl8" path="res://Art/ReflectionScenes/sky.png" id="2_kv40d"]
+[ext_resource type="Texture2D" uid="uid://so3fg78cr10g" path="res://Art/ReflectionScenes/stork.png" id="3_5cy1d"]
+[ext_resource type="Theme" uid="uid://cxicaxyktwlcv" path="res://Themes/ContinueButtonTheme.tres" id="4_urvoa"]
+[ext_resource type="Texture2D" uid="uid://dmmyb5jpa3dqa" path="res://Art/continue button.png" id="5_26w15"]
+
+[node name="ReflectionScene1" type="Control" node_paths=PackedStringArray("continueButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i0flf")
+continueButton = NodePath("TextArea/ContinueButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ImageContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 571.0
+offset_bottom = 517.0
+grow_horizontal = 2
+
+[node name="Sky" type="TextureRect" parent="ImageContainer"]
+material = ExtResource("2_5cy1d")
+instance_shader_parameters/colorCorrection = 0.95
+instance_shader_parameters/pencilTexScale = 1.0
+instance_shader_parameters/rotation = 0.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kv40d")
+expand_mode = 1
+
+[node name="Stork" type="TextureRect" parent="ImageContainer"]
+material = ExtResource("2_5cy1d")
+instance_shader_parameters/pencilTexScale = 1.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5cy1d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextArea" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -208.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="TextArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -104.5
+offset_right = 366.0
+offset_bottom = 104.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Has money but still no time, maybe they need a partner"
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="TextArea"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -41.0
+offset_right = -26.0
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("4_urvoa")
+icon = ExtResource("5_26w15")
