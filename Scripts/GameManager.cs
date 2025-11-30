@@ -10,12 +10,15 @@ public partial class GameManager : Control
 	[Export] PackedScene[] gameScenes;
 	private int currentSceneindex = 0;
 	private Node currentScene;
+	[Export] AudioStreamPlayer audioPlayer;
+	private AudioStreamPlaybackInteractive interactiveStream;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Instance = this;
-
+		Instance.audioPlayer.Play();
+		Instance.interactiveStream = Instance.audioPlayer.GetStreamPlayback() as AudioStreamPlaybackInteractive;
 		InstantiateScene(0);
 
     }
@@ -37,6 +40,9 @@ public partial class GameManager : Control
 
 		//instantiate the new scene
 		Instance.InstantiateScene(Instance.currentSceneindex);
+
+		GD.Print("Switching audio stream");
+		Instance.interactiveStream.SwitchToClip(Instance.currentSceneindex + 1);
 
 
 	}
