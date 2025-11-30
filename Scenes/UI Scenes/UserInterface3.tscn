@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgejw2vhyr5ke"]
+[gd_scene load_steps=38 format=3 uid="uid://dgejw2vhyr5ke"]
 
 [ext_resource type="Script" uid="uid://dejqppk1wuok5" path="res://Scripts/UserInterface.cs" id="1_ryqm5"]
 [ext_resource type="Texture2D" uid="uid://dfb3v2ksyhpv8" path="res://Art/unobtained object ui.png" id="2_8koqq"]
@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://c4h3t5umgb13d" path="res://Art/Scene3/Not Zeroed/scene-3_0020_dog.png" id="19_16okc"]
 [ext_resource type="Texture2D" uid="uid://8njpiws5sbo6" path="res://Art/Scene3/Zeroed/scene-3_0017_partner.png" id="20_fh186"]
 [ext_resource type="Texture2D" uid="uid://d8wj7om2el4u" path="res://Art/Scene3/Not Zeroed/scene-3_0013_Layer-10.png" id="20_ryqm5"]
+[ext_resource type="Script" uid="uid://dy4fvmrwdkpa3" path="res://Scripts/DogHearts.cs" id="26_mjekr"]
+[ext_resource type="Texture2D" uid="uid://ci688s3rlcfrl" path="res://Art/heart.png" id="27_t56ub"]
 [ext_resource type="Theme" uid="uid://cxicaxyktwlcv" path="res://Themes/ContinueButtonTheme.tres" id="30_8koqq"]
 [ext_resource type="Script" uid="uid://dmw6gx5y8uwyq" path="res://Scripts/TextManager.cs" id="30_ghgnx"]
 [ext_resource type="Texture2D" uid="uid://dmmyb5jpa3dqa" path="res://Art/continue button.png" id="31_5w0kp"]
@@ -52,6 +54,17 @@ shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_progress = 0.0
 shader_parameter/shine_size = 0.1
 shader_parameter/shine_angle = 19.20000028610304
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4c18t"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -52.8, 0)
+emission_shape = 3
+emission_box_extents = Vector3(38.285, 12.92, 1)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 37.569996
+radial_accel_max = 40.879997
+scale_min = 0.099999994
+scale_max = 0.5
 
 [node name="UI" type="Control" node_paths=PackedStringArray("clickableObects", "continueButton")]
 layout_mode = 3
@@ -480,9 +493,28 @@ offset_bottom = 477.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+mouse_behavior_recursive = 2
 texture = ExtResource("19_16okc")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="DogHeartsArea" type="Control" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog"]
+anchors_preset = 0
+offset_left = 304.0
+offset_top = 284.0
+offset_right = 371.0
+offset_bottom = 353.0
+mouse_filter = 1
+mouse_behavior_recursive = 2
+script = ExtResource("26_mjekr")
+
+[node name="DogHearts" type="GPUParticles2D" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea/Dog/DogHeartsArea"]
+z_index = 1
+position = Vector2(33, 40)
+emitting = false
+amount = 4
+texture = ExtResource("27_t56ub")
+process_material = SubResource("ParticleProcessMaterial_4c18t")
 
 [node name="Bed" type="TextureRect" parent="VBoxContainer/Upper Section/HBoxContainer/ImageArea"]
 material = ExtResource("7_bcl5m")
