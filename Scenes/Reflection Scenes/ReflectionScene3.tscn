@@ -86,7 +86,7 @@ offset_right = 366.0
 offset_bottom = 104.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Has money but still no time, maybe they need a partner"
+text = "Such a busy life she has  but she’s nearly out of time"
 autowrap_mode = 2
 
 [node name="ContinueButton" type="Button" parent="TextArea"]
